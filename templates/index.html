@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tasker Web</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>My Task List</h1>
+    <form method="POST" action="/add">
+        <input type="text" name="task" placeholder="Enter a task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.name }} - {{ task.status }}
+                <a href="/delete/{{ loop.index0 }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
