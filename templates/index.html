@@ -6,19 +6,34 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+
     <h1>My Task List</h1>
     <form method="POST" action="/add">
         <input type="text" name="task" placeholder="Enter a task" required>
         <button type="submit">Add Task</button>
     </form>
 
-    <ul>
-        {% for task in tasks %}
-            <li>
-                {{ task.name }} - {{ task.status }}
-                <a href="/delete/{{ loop.index0 }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+  <ul>
+  {% for task in tasks %}
+    <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+      
+      <!-- Task name -->
+      <span style="flex: 5;">{{ task.name }}</span>
+      
+      <!-- Status -->
+      <span style="flex: 12; text-align: center;">{{ task.status }}</span>
+      
+      <!-- Buttons -->
+      <span style="flex: 5; text-align: right;">
+        {% if task.status != "Done" %}
+          <a href="/done/{{ loop.index0 }}" class="btn">Done</a>
+        {% endif %}
+        <a href="/delete/{{ loop.index0 }}" class="btn">Delete</a>
+      </span>
+      
+    </li>
+  {% endfor %}
+</ul>
+
 </body>
 </html>

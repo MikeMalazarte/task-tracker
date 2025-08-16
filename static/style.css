@@ -22,3 +22,12 @@ li {
     padding: 8px;
     border-bottom: 1px solid #ccc;
 }
+
+li a {
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 4px 8px;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
